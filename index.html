@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTERODACTYL BY ROVI HOSTING | Panel Hosting Berkualitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .product-category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .product-body {
+            padding: 20px;
+        }
+        
+        .product-features {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a4bcf;
+            transform: translateY(-2px);
+        }
+        
+        .payment-method {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .payment-method h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .payment-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        .payment-details {
+            text-align: left;
+        }
+        
+        .payment-number {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .copy-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .testimonial-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .testimonial-section h2 {
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-link {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--dark);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 1.5rem;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--dark);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #5a4bcf;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1100;
+        }
+        
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .payment-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PTERODACTYL BY ROVI HOSTING</h1>
+            <p>Panel Hosting Berkualitas dengan Harga Terjangkau</p>
+        </header>
+        
+        <div class="payment-method">
+            <h2>Pembayaran Otomatis via DANA</h2>
+            <div class="payment-info">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" class="payment-logo">
+                <div class="payment-details">
+                    <p>Nomor DANA:</p>
+                    <p class="payment-number">0895337157018</p>
+                </div>
+            </div>
+            <button id="copyBtn" class="copy-btn">
+                <i class="fas fa-copy"></i> Salin Nomor
+            </button>
+            <p style="margin-top: 15px; font-size: 0.9rem;">Setelah pembayaran, panel akan otomatis aktif dalam 1-3 menit.</p>
+        </div>
+        
+        <div class="product-category">
+            <h2 class="category-title">Pterodactyl Private</h2>
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>2GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>2GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp2.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 2GB" data-price="2000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>3GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>3GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp3.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 3GB" data-price="3000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>4GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>4GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp4.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 4GB" data-price="4000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>5GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>5GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp5.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 5GB" data-price="5000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>6GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>6GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp6.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 6GB" data-price="6000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>7GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>7GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp7.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 7GB" data-price="7000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>8GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>8GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp8.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private 8GB" data-price="8000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>UNLIMITED RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Private</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>Unlimited</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp9.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Private UNLIMITED" data-price="9000">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-category">
+            <h2 class="category-title">Pterodactyl Public</h2>
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>2GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>2GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp1.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 2GB" data-price="1000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>3GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>3GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp2.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 3GB" data-price="2000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>4GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>4GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp3.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 4GB" data-price="3000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>5GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>5GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp4.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 5GB" data-price="4000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>6GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>6GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp5.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 6GB" data-price="5000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>7GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>7GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp6.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 7GB" data-price="6000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>8GB RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>8GB</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp7.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public 8GB" data-price="7000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>UNLIMITED RAM</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis Panel:</span> <span>Public</span></li>
+                            <li><span>Kapasitas RAM:</span> <span>Unlimited</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Rp8.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="Pterodactyl Public UNLIMITED" data-price="8000">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-category">
+            <h2 class="category-title">Produk Lainnya</h2>
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>RESELLER PANEL</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Reseller Panel</span></li>
+                            <li><span>Harga Jual:</span> <span>Rp5.000</span></li>
+                            <li><span>Bonus:</span> <span>Bisa Open Reseller</span></li>
+                        </ul>
+                        <div class="product-price">Rp5.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="RESELLER PANEL" data-price="5000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>ADMIN PANEL</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Admin Panel</span></li>
+                            <li><span>Harga Jual:</span> <span>Rp8.000</span></li>
+                            <li><span>Bonus:</span> <span>Bisa Open Reseller</span></li>
+                        </ul>
+                        <div class="product-price">Rp8.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="ADMIN PANEL" data-price="8000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>PT PANEL</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>PT Panel</span></li>
+                            <li><span>Harga Jual:</span> <span>Rp10.000</span></li>
+                            <li><span>Fitur:</span> <span>Premium</span></li>
+                        </ul>
+                        <div class="product-price">Rp10.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="PT PANEL" data-price="10000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>TAGAN KANAN</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Tagan Kanan</span></li>
+                            <li><span>Harga Jual:</span> <span>Rp15.000</span></li>
+                            <li><span>Fitur:</span> <span>Premium</span></li>
+                        </ul>
+                        <div class="product-price">Rp15.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="TAGAN KANAN" data-price="15000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>OWNER PANEL</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Owner Panel</span></li>
+                            <li><span>Harga Jual:</span> <span>Rp20.000</span></li>
+                            <li><span>Fitur:</span> <span>Full Akses</span></li>
+                        </ul>
+                        <div class="product-price">Rp20.000</div>
+                        <button class="btn btn-primary buy-btn" data-product="OWNER PANEL" data-price="20000">Beli Sekarang</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>SEWA BOT WA</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Bot WhatsApp</span></li>
+                            <li><span>Fitur:</span> <span>Custom</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Hubungi Kami</div>
+                        <a href="https://wa.me/62895337157018?text=Halo,%20saya%20ingin%20bertanya%20tentang%20sewa%20bot%20WA" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>ADMIN CH</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Admin CH</span></li>
+                            <li><span>Fitur:</span> <span>Premium</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Hubungi Kami</div>
+                        <a href="https://wa.me/62895337157018?text=Halo,%20saya%20ingin%20bertanya%20tentang%20Admin%20CH" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <h3>WEB PAYMENT</h3>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><span>Jenis:</span> <span>Web Payment</span></li>
+                            <li><span>Fitur:</span> <span>Custom</span></li>
+                            <li><span>Garansi:</span> <span>5 Hari</span></li>
+                        </ul>
+                        <div class="product-price">Hubungi Kami</div>
+                        <a href="https://wa.me/62895337157018?text=Halo,%20saya%20ingin%20pesan%20Web%20Payment" class="btn btn-primary">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-section">
+            <h2>Testimoni Pelanggan Kami</h2>
+            <p>Lihat apa kata pelanggan tentang layanan kami</p>
+            <a href="https://whatsapp.com/channel/0029Vb6aRaEAojYli9n7ZV38" class="testimonial-link" target="_blank">
+                <i class="fas fa-comment-alt"></i> Lihat Testimoni
+            </a>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 PTERODACTYL BY ROVI HOSTING. All Rights Reserved.</p>
+            <a href="https://wa.me/62895337157018?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20ROVI%20HOSTING" class="contact-btn">
+                <i class="fab fa-whatsapp"></i> Hubungi Kami via WhatsApp
+            </a>
+        </footer>
+    </div>
+    
+    <!-- Modal Pembelian -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Konfirmasi Pembelian</h2>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="productName">Produk:</label>
+                    <input type="text" id="productName" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Harga:</label>
+                    <input type="text" id="productPrice" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="customerName">Nama Anda:</label>
+                    <input type="text" id="customerName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email/WhatsApp:</label>
+                    <input type="text" id="customerEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentProof">Upload Bukti Pembayaran:</label>
+                    <input type="file" id="paymentProof" class="form-control" accept="image/*" required>
+                </div>
+                <button type="submit" class="submit-btn">Konfirmasi Pembelian</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Notifikasi -->
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+    
+    <script>
+        // Salin nomor DANA
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const paymentNumber = '0895337157018';
+            navigator.clipboard.writeText(paymentNumber).then(function() {
+                showNotification('Nomor DANA berhasil disalin!');
+            }, function() {
+                // Fallback untuk browser yang tidak mendukung clipboard API
+                const textarea = document.createElement('textarea');
+                textarea.value = paymentNumber;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showNotification('Nomor DANA berhasil disalin!');
+            });
+        });
+        
+        // Modal pembelian
+        const modal = document.getElementById('purchaseModal');
+        const buyButtons = document.querySelectorAll('.buy-btn');
+        const closeBtn = document.querySelector('.close');
+        const productNameInput = document.getElementById('productName');
+        const productPriceInput = document.getElementById('productPrice');
+        
+        buyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                const price = this.getAttribute('data-price');
+                
+                productNameInput.value = product;
+                productPriceInput.value = 'Rp' + parseInt(price).toLocaleString('id-ID');
+                
+                modal.style.display = 'block';
+            });
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simpan data pembelian (dalam implementasi nyata, kirim ke server)
+            const product = productNameInput.value;
+            const price = productPriceInput.value;
+            const name = document.getElementById('customerName').value;
+            const contact = document.getElementById('customerEmail').value;
+            
+            // Tampilkan notifikasi
+            showNotification('Pembelian ' + product + ' seharga ' + price + ' berhasil dikonfirmasi!');
+            
+            // Reset form dan tutup modal
+            this.reset();
+            modal.style.display = 'none';
+            
+            // Redirect ke WhatsApp dengan pesan otomatis (opsional)
+            const whatsappMessage = `Halo, saya sudah membeli
